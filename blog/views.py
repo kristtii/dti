@@ -18,6 +18,8 @@ def post_list(request):
     query = request.GET.get('q')
     category_id = request.GET.get('category')
 
+    
+
     if query:
         posts = posts.filter(title__icontains=query)
 
