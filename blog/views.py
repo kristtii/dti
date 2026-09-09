@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Post, EmailVerification
 from django.http import HttpResponse
 
-def health(request):
+def health_check(request):
     return HttpResponse("OK")
 
 def home(request):
