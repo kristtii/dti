@@ -1,0 +1,47 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}DTI Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrapper">
+            <h1 class="logo">DTI Blog</h1>
+
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'post_list' %}">Posts</a>
+                <a href="{% url 'about' %}">About</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'my_posts' %}">My Posts</a>
+                    <a href="{% url 'create_post' %}">Create Post</a>
+
+                    <form method="post" action="{% url 'logout' %}" class="logout-form">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 DTI Blog Project</p>
+        </div>
+    </footer>
+</body>
+</html>

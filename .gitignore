@@ -1,0 +1,21 @@
+# Sekretet 
+.env
+.env.*
+
+# Python
+__pycache__/
+venv/
+.venv/
+
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# Deploy artifacts
+*.zip
+
+# IDE & System files
+.vscode/
+.DS_Store
+

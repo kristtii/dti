@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Verification Failed{% endblock %}
+
+{% block content %}
+<section class="message-card error">
+    <h1>Verification failed</h1>
+
+    <p>
+        The verification link is invalid or expired.
+        Verification links are valid for only 5 minutes.
+    </p>
+
+    <a href="{% url 'register' %}">Register again</a>
+</section>
+{% endblock %}

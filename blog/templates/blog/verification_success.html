@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Email Verified{% endblock %}
+
+{% block content %}
+<section class="message-card success">
+    <h1>Email verified successfully</h1>
+
+    <p>Your account is now active. You can login.</p>
+
+    <a href="{% url 'login' %}">Login</a>
+</section>
+{% endblock %}

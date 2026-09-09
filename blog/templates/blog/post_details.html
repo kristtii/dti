@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <article class="post-detail">
+        <h1>{{ post.title }}</h1>
+
+        <p>Category: {{ post.category.name }}</p>
+        <p>
+            Author:
+            {% if post.author %}
+                {{ post.author.username }}
+            {% else %}
+                {{ post.author_name }}
+            {% endif %}
+        </p>
+        <p>Created at: {{ post.created_at }}</p>
+
+        <hr>
+
+        <p>{{ post.content }}</p>
+
+        <div class="likes-box">
+            <p>{{ post.likes.count }} likes</p>
+
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'like_post' post.slug %}">
+                    {% csrf_token %}
+
+                    {% if user_liked %}
+                        <button type="submit">Unlike</button>
+                    {% else %}
+                        <button type="submit">Like</button>
+                    {% endif %}
+                </form>
+            {% else %}
+                <button class="disabled-like" title="You need to login before liking a post">
+                    Like
+                </button>
+            {% endif %}
+        </div>
+
+        {% if user.is_authenticated and post.author == user %}
+            <div class="actions">
+                <a class="btn" href="{% url 'edit_post' post.slug %}">Edit</a>
+                <a class="btn danger" href="{% url 'delete_post' post.slug %}">Delete</a>
+            </div>
+        {% endif %}
+    </article>
+
+    <a href="{% url 'post_list' %}">Back to posts</a>
+{% endblock %}

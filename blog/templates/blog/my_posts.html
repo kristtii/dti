@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}My Posts{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>My Posts</h1>
+        <a class="btn" href="{% url 'create_post' %}">Create Post</a>
+    </div>
+
+    {% for post in posts %}
+        <article class="post-card">
+            <h2>
+                <a href="{% url 'post_detail' post.slug %}">
+                    {{ post.title }}
+                </a>
+            </h2>
+
+            <p>Category: {{ post.category.name }}</p>
+            <p>Created at: {{ post.created_at }}</p>
+
+            <a href="{% url 'edit_post' post.slug %}">Edit</a>
+            <a href="{% url 'delete_post' post.slug %}">Delete</a>
+        </article>
+    {% empty %}
+        <p>You have not created any posts yet.</p>
+    {% endfor %}
+{% endblock %}

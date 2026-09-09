@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h2>Welcome to DTI Blog</h2>
+    <p>This is a Django Blog project built step by step during the course.</p>
+    <a href="{% url 'post_list' %}">View all posts</a>
+{% endblock %}

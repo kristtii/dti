@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Verification Sent{% endblock %}
+
+{% block content %}
+<section class="message-card">
+    <h1>Check your email</h1>
+
+    <p>
+        We sent you a verification link.
+        The link will expire in 5 minutes.
+    </p>
+
+    <a href="{% url 'login' %}">Go to Login</a>
+</section>
+{% endblock %}
