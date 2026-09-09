@@ -17,8 +17,6 @@ def post_list(request):
     posts = Post.objects.filter(is_published = True).order_by('-created_at')
     categories = Category.objects.all()
     query = request.GET.get('q')
-
-    
     category_id = request.GET.get('category')
 
     if query:
