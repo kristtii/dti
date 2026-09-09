@@ -5,6 +5,10 @@ from .forms import RegisterForm, PostForm
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Post, EmailVerification
+from django.http import HttpResponse
+
+def health(request):
+    return HttpResponse("OK")
 
 def home(request):
     return render(request, 'blog/home.html')
